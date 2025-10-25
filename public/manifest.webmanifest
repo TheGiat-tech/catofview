@@ -1,0 +1,16 @@
+{
+  "name": "Cat of View",
+  "short_name": "Cat of View",
+  "description": "Expert cat litter reviews and recommendations",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f0fdf7",
+  "theme_color": "#2ea86c",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
