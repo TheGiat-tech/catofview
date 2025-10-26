@@ -29,8 +29,11 @@ export function getAllPosts(): BlogPost[] {
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
 
+      // Sanitize slug to only allow safe characters (alphanumeric, hyphens, underscores)
+      const sanitizedSlug = slug.replace(/[^a-zA-Z0-9-_]/g, '-');
+
       return {
-        slug,
+        slug: sanitizedSlug,
         title: data.title || 'Untitled',
         date: data.date || '',
         author: data.author || 'Anonymous',
@@ -52,12 +55,15 @@ export function getAllPosts(): BlogPost[] {
 
 export function getPostBySlug(slug: string): BlogPost | null {
   try {
-    const fullPath = path.join(postsDirectory, `${slug}.md`);
+    // Sanitize slug to only allow safe characters (alphanumeric, hyphens, underscores)
+    const sanitizedSlug = slug.replace(/[^a-zA-Z0-9-_]/g, '-');
+    
+    const fullPath = path.join(postsDirectory, `${sanitizedSlug}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
     return {
-      slug,
+      slug: sanitizedSlug,
       title: data.title || 'Untitled',
       date: data.date || '',
       author: data.author || 'Anonymous',
