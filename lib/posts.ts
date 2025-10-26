@@ -4,8 +4,10 @@ import matter from 'gray-matter';
 import readingTime from 'reading-time';
 import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeStringify from 'rehype-stringify';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 
@@ -83,8 +85,10 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 export async function markdownToHtml(markdown: string): Promise<string> {
   const result = await remark()
     .use(remarkGfm)
+    .use(remarkRehype)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings)
+    .use(rehypeStringify)
     .process(markdown);
   return result.toString();
 }
