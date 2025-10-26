@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🐱 Cat of View
 
-## Getting Started
+A beautiful blog dedicated to cats, built with Next.js, TypeScript, and Tailwind CSS. Features a warm desert color palette with browns, tans, and mustards.
 
-First, run the development server:
+![Cat of View Homepage](https://github.com/user-attachments/assets/8d994983-7705-468d-b830-93866af33e56)
 
+## ✨ Features
+
+- **📝 Blog System**: Full-featured blog with markdown support and frontmatter metadata
+- **🎨 Desert Color Palette**: Beautiful warm colors (browns, tans, mustards) throughout
+- **💻 Syntax Highlighting**: Code blocks with proper syntax highlighting for multiple languages
+- **🛍️ Amazon Affiliate Products**: Dedicated component for showcasing Amazon products with images, prices, and descriptions
+- **📱 Responsive Design**: Mobile-friendly layout using Tailwind CSS
+- **⚡ Static Site Generation**: Fast performance with Next.js SSG
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/TheGiat-tech/catofview.git
+cd catofview
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Learn More
+## 🏗️ Build
 
-To learn more about Next.js, take a look at the following resources:
+To create a production build:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+```
+catofview/
+├── app/                    # Next.js app directory
+│   ├── blog/[slug]/       # Dynamic blog post pages
+│   ├── globals.css        # Global styles with desert palette
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Homepage
+├── components/            # React components
+│   ├── AmazonProduct.tsx  # Amazon affiliate product display
+│   └── BlogContent.tsx    # Markdown blog content renderer
+├── content/posts/         # Blog posts in Markdown
+├── lib/                   # Utility functions
+│   └── posts.ts          # Blog post management
+└── public/               # Static assets
+    └── images/           # Product images
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 Adding Blog Posts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Create a new markdown file in `content/posts/`:
+
+```markdown
+---
+title: "Your Post Title"
+date: "2025-10-25"
+author: "Your Name"
+excerpt: "Brief description of your post"
+---
+
+# Your Post Content
+
+Write your content here using Markdown...
+```
+
+## 🎨 Color Palette
+
+The desert theme uses these colors:
+
+- **Sand**: #E8D5B7
+- **Tan**: #D4A373
+- **Brown**: #8B6F47
+- **Dark Brown**: #654321
+- **Mustard**: #D4AF37
+- **Cream**: #F5EFE0
+- **Terracotta**: #B87333
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 16
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Markdown**: react-markdown, gray-matter
+- **Syntax Highlighting**: rehype-highlight
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+---
+
+Made with ❤️ for cat lovers everywhere
