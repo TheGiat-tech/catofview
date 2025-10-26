@@ -16,7 +16,7 @@ export function Card({ title, description, image, href, className, children }: C
     <div className={cn('bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow', className)}>
       {image && (
         <div className="relative h-48 w-full">
-          <Image src={image} alt={title} fill className="object-cover" />
+          <Image src={image} alt={title} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
         </div>
       )}
       <div className="p-6">

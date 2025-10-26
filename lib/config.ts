@@ -6,7 +6,7 @@ export const config = {
   author: 'Cat of View',
   adsenseClient: 'ca-pub-8054613417167519',
   amazonTag: process.env.AMAZON_TAG ?? '',
-  brandColor: '#2ea86c',
+  brandColor: '#d4892d',
   nav: [
     { href: '/', label: 'Home' },
     { href: '/reviews', label: 'Reviews' },
