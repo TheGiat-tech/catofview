@@ -58,9 +58,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body className="bg-[color:var(--bg)] text-[color:var(--text)] antialiased">
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen body-gradient">{children}</main>
         <Footer />
       </body>
     </html>
