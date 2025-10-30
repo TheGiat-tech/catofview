@@ -80,48 +80,52 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         )}
 
+        <div className="hero-desert">
+          <Container className="max-w-4xl">
+            <header className="mb-12">
+              <div className="flex items-center gap-4 text-sm text-[color:var(--subtext)] mb-4">
+                <time dateTime={post.frontMatter.date}>
+                  {formatDate(post.frontMatter.date)}
+                </time>
+                <span>•</span>
+                <span>{post.readingTime}</span>
+              </div>
+
+              <h1 className="text-5xl font-bold text-[color:var(--text)] mb-4">{post.frontMatter.title}</h1>
+
+              <p className="text-xl text-[color:var(--subtext)] mb-4">{post.frontMatter.excerpt}</p>
+
+              {post.frontMatter.rating && (
+                <div className="flex items-center gap-4">
+                  <span className="font-semibold text-[color:var(--text)]">Overall Rating:</span>
+                  <RatingStars rating={post.frontMatter.rating} />
+                </div>
+              )}
+
+              {post.frontMatter.tags && post.frontMatter.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {post.frontMatter.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 bg-desert-100 text-[color:var(--text)] rounded-full text-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </header>
+          </Container>
+        </div>
+
         <Container className="max-w-4xl">
-          <header className="mb-12">
-            <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-              <time dateTime={post.frontMatter.date}>
-                {formatDate(post.frontMatter.date)}
-              </time>
-              <span>•</span>
-              <span>{post.readingTime}</span>
-            </div>
-
-            <h1 className="text-5xl font-bold mb-4">{post.frontMatter.title}</h1>
-            
-            <p className="text-xl text-gray-600 mb-4">{post.frontMatter.excerpt}</p>
-
-            {post.frontMatter.rating && (
-              <div className="flex items-center gap-4">
-                <span className="font-semibold">Overall Rating:</span>
-                <RatingStars rating={post.frontMatter.rating} />
-              </div>
-            )}
-
-            {post.frontMatter.tags && post.frontMatter.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-4">
-                {post.frontMatter.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 bg-brand-100 text-brand-700 rounded-full text-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </header>
-
           <Prose>
             <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
           </Prose>
 
           {post.frontMatter.products && post.frontMatter.products.length > 0 && (
             <section className="mt-12">
-              <h2 className="text-3xl font-bold mb-6">Featured Products</h2>
+              <h2 className="text-3xl font-bold text-[color:var(--text)] mb-6">Featured Products</h2>
               <ProductGrid products={post.frontMatter.products} />
             </section>
           )}
