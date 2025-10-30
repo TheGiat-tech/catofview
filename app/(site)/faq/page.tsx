@@ -11,7 +11,7 @@ export default function FAQPage() {
     {
       question: 'Do self-cleaning litter boxes really eliminate odor?',
       answer:
-        'Most premium models significantly reduce odor through sealed waste compartments and carbon filters. However, they don\'t eliminate odor completely—you still need to empty the waste drawer weekly and clean the unit monthly. Models with deodorizers and Wi-Fi alerts for full drawers perform best.',
+        "Most premium models significantly reduce odor through sealed waste compartments and carbon filters. However, they don't eliminate odor completely—you still need to empty the waste drawer weekly and clean the unit monthly. Models with deodorizers and Wi-Fi alerts for full drawers perform best.",
     },
     {
       question: 'Are automatic litter boxes safe for cats?',
@@ -31,7 +31,7 @@ export default function FAQPage() {
     {
       question: 'Can I use tofu litter with automatic boxes?',
       answer:
-        'Yes! Most self-cleaning boxes work well with tofu litter. It\'s lightweight, clumps well, and produces less dust than clay. Some models (like PETKIT PURA X) explicitly recommend tofu litter. Avoid pine pellets or crystal litter unless specifically approved by the manufacturer.',
+        "Yes! Most self-cleaning boxes work well with tofu litter. It's lightweight, clumps well, and produces less dust than clay. Some models (like PETKIT PURA X) explicitly recommend tofu litter. Avoid pine pellets or crystal litter unless specifically approved by the manufacturer.",
     },
     {
       question: 'Do they work with clay/clumping litter?',
@@ -56,42 +56,44 @@ export default function FAQPage() {
     {
       question: 'Will my cat actually use it?',
       answer:
-        'Most cats adapt within a few days to a week. Success tips: (1) Place it next to their old box initially, (2) Use the same litter type, (3) Don\'t force them—let them explore at their own pace, (4) Keep the old box available for the first week. Acceptance rate is roughly 85-90% based on user reviews. Nervous or elderly cats may need more time.',
+        "Most cats adapt within a few days to a week. Success tips: (1) Place it next to their old box initially, (2) Use the same litter type, (3) Don't force them—let them explore at their own pace, (4) Keep the old box available for the first week. Acceptance rate is roughly 85-90% based on user reviews. Nervous or elderly cats may need more time.",
     },
   ];
 
   return (
-    <Container className="max-w-4xl">
-      <h1 className="text-4xl font-bold mb-4">Frequently Asked Questions</h1>
-      <p className="text-xl text-gray-600 mb-12">
-        Common questions about self-cleaning litter boxes, odor control, safety, and costs.
-      </p>
-
-      <div className="space-y-8">
-        {faqs.map((faq, index) => (
-          <div key={index} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-            <h2 className="text-xl font-bold text-brand-700 mb-3">
-              {index + 1}. {faq.question}
-            </h2>
-            <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-12 bg-brand-50 border border-brand-200 rounded-lg p-8 text-center">
-        <h2 className="text-2xl font-bold mb-4">Have More Questions?</h2>
-        <p className="text-gray-700 mb-6">
-          Check our detailed reviews and buying guides for more information.
+    <section className="hero-desert">
+      <Container className="max-w-4xl">
+        <h1 className="text-4xl font-bold text-[color:var(--text)] mb-4">Frequently Asked Questions</h1>
+        <p className="text-xl text-[color:var(--subtext)] mb-12">
+          Common questions about self-cleaning litter boxes, odor control, safety, and costs.
         </p>
-        <div className="flex gap-4 justify-center">
-          <a href="/self-cleaning" className="btn-primary">
-            Self-Cleaning Guide
-          </a>
-          <a href="/blog" className="btn-secondary">
-            Read Our Blog
-          </a>
+
+        <div className="space-y-8">
+          {faqs.map((faq, index) => (
+            <div key={index} className="card p-6">
+              <h2 className="text-xl font-bold text-[color:var(--text)] mb-3">
+                {index + 1}. {faq.question}
+              </h2>
+              <p className="text-[color:var(--subtext)] leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
         </div>
-      </div>
-    </Container>
+
+        <div className="mt-12 bg-desert-100 border border-[color:var(--border)] rounded-card p-8 text-center">
+          <h2 className="text-2xl font-bold text-[color:var(--text)] mb-4">Have More Questions?</h2>
+          <p className="text-[color:var(--subtext)] mb-6">
+            Check our detailed reviews and buying guides for more information.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a href="/self-cleaning" className="btn btn-primary">
+              Self-Cleaning Guide
+            </a>
+            <a href="/blog" className="btn btn-accent">
+              Read Our Blog
+            </a>
+          </div>
+        </div>
+      </Container>
+    </section>
   );
 }

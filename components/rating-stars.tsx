@@ -34,9 +34,9 @@ export function RatingStars({ rating, maxRating = 5, size = 'md' }: RatingStarsP
   });
 
   return (
-    <div className="flex items-center space-x-1 text-yellow-500">
+    <div className="flex items-center space-x-1 text-camel">
       {stars}
-      <span className="ml-2 text-sm text-gray-600">{rating.toFixed(1)}</span>
+      <span className="ml-2 text-sm text-[color:var(--subtext)]">{rating.toFixed(1)}</span>
     </div>
   );
 }
