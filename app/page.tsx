@@ -8,30 +8,30 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-brand-50 to-white py-16">
-        <Container>
+      <section className="hero-desert">
+        <Container className="py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <Badge variant="success" className="mb-4">
                 Updated for 2025
               </Badge>
-              <h1 className="text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-5xl font-bold text-[color:var(--text)] mb-6">
                 The 5 Best Tofu Cat Litters (2025) – Tested & Reviewed
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-[color:var(--subtext)] mb-8">
                 We've tested dozens of cat litters to find the best options for odor control,
                 clumping, and environmental friendliness. Here are our top picks.
               </p>
-              <div className="flex gap-4">
-                <Link href="/reviews" className="btn-primary">
+              <div className="flex flex-wrap gap-4">
+                <Link href="/reviews" className="btn btn-primary">
                   See All Reviews
                 </Link>
-                <Link href="/self-cleaning" className="btn-secondary">
+                <Link href="/self-cleaning" className="btn btn-accent">
                   Self-Cleaning Boxes
                 </Link>
               </div>
             </div>
-            <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
+            <div className="relative h-96 rounded-card overflow-hidden shadow-desert">
               <Image
                 src="/images/brand/hero-cat.jpg"
                 alt="Cat of View - Expert Reviews"
@@ -44,8 +44,10 @@ export default function HomePage() {
       </section>
 
       {/* Featured Categories */}
-      <Container>
-        <h2 className="text-3xl font-bold text-center mb-12">Featured Categories</h2>
+      <Container className="py-16">
+        <h2 className="text-3xl font-bold text-center text-[color:var(--text)] mb-12">
+          Featured Categories
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card
             title="Tofu Cat Litter"
@@ -64,22 +66,25 @@ export default function HomePage() {
             description="In-depth testing of cat litters, boxes, and accessories."
             href="/reviews"
           >
-            <div className="text-brand-600 font-semibold">View All Reviews →</div>
+            <div className="text-oasis font-semibold">View All Reviews →</div>
           </Card>
         </div>
       </Container>
 
       {/* How We Test */}
-      <section className="bg-gray-50 py-16 mt-16">
+      <section className="bg-[color:var(--bg-muted)] py-16 mt-16">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">How We Test</h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <h2 className="text-3xl font-bold text-[color:var(--text)] mb-6">How We Test</h2>
+            <p className="text-lg text-[color:var(--subtext)] mb-8">
               Our team tests every product for at least 2 weeks in real-world conditions.
               We evaluate odor control (35%), safety (25%), maintenance (20%), app features (10%),
               and noise levels (10%) to give you honest, data-driven recommendations.
             </p>
-            <Link href="/how-we-test" className="text-brand-600 hover:text-brand-700 font-semibold">
+            <Link
+              href="/how-we-test"
+              className="text-[color:var(--link)] hover:text-[color:var(--link-hover)] font-semibold"
+            >
               Learn More About Our Process →
             </Link>
           </div>
@@ -87,8 +92,8 @@ export default function HomePage() {
       </section>
 
       {/* Latest Posts */}
-      <Container>
-        <h2 className="text-3xl font-bold mb-8">Latest from the Blog</h2>
+      <Container className="py-16">
+        <h2 className="text-3xl font-bold text-[color:var(--text)] mb-8">Latest from the Blog</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card
             title="The 7 Best Self-Cleaning Litter Boxes (2025)"
@@ -104,7 +109,7 @@ export default function HomePage() {
           />
         </div>
         <div className="text-center mt-8">
-          <Link href="/blog" className="btn-primary">
+          <Link href="/blog" className="btn btn-primary">
             View All Posts
           </Link>
         </div>

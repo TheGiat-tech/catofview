@@ -1,80 +1,69 @@
 .prose {
-  @apply text-gray-800 leading-relaxed;
+  @apply text-[color:var(--subtext)] leading-relaxed;
 }
 
 .prose h1 {
-  @apply text-4xl font-bold mt-8 mb-4 text-gray-900;
+  @apply text-4xl font-bold mt-8 mb-4 text-[color:var(--text)];
 }
 
 .prose h2 {
-  @apply text-3xl font-bold mt-8 mb-4 text-gray-900;
+  @apply text-3xl font-bold mt-8 mb-4 text-[color:var(--text)];
 }
 
 .prose h3 {
-  @apply text-2xl font-bold mt-6 mb-3 text-gray-900;
+  @apply text-2xl font-bold mt-6 mb-3 text-[color:var(--text)];
 }
 
 .prose h4 {
-  @apply text-xl font-bold mt-4 mb-2 text-gray-900;
+  @apply text-xl font-bold mt-4 mb-2 text-[color:var(--text)];
 }
 
 .prose p {
-  @apply mb-4 text-base leading-7;
-}
-
-.prose a {
-  @apply text-brand-600 hover:text-brand-700 underline;
+  @apply my-4 text-[color:var(--subtext)];
 }
 
 .prose ul,
 .prose ol {
-  @apply mb-4 ml-6;
-}
-
-.prose ul {
-  @apply list-disc;
-}
-
-.prose ol {
-  @apply list-decimal;
+  @apply my-4 pl-6;
 }
 
 .prose li {
-  @apply mb-2;
+  @apply my-2 text-[color:var(--subtext)];
+}
+
+.prose a {
+  @apply text-[color:var(--link)] underline decoration-from-font underline-offset-4;
 }
 
 .prose blockquote {
-  @apply border-l-4 border-brand-500 pl-4 italic my-4 text-gray-700;
-}
-
-.prose code {
-  @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono;
-}
-
-.prose pre {
-  @apply bg-gray-100 p-4 rounded overflow-x-auto mb-4;
-}
-
-.prose pre code {
-  @apply bg-transparent p-0;
+  @apply border-l-4 border-[color:var(--accent)] pl-4 italic my-4 text-[color:var(--subtext)];
 }
 
 .prose img {
-  @apply rounded-lg my-6;
+  @apply rounded-xl shadow-lg border border-[color:var(--border)];
 }
 
 .prose table {
-  @apply w-full mb-4 border-collapse;
+  @apply w-full my-6 border border-collapse;
+}
+
+.prose th,
+.prose td {
+  @apply border border-[color:var(--border)] p-3 text-left;
 }
 
 .prose th {
-  @apply bg-gray-100 border border-gray-300 px-4 py-2 text-left font-semibold;
+  @apply bg-[color:var(--bg-muted)] text-[color:var(--text)] font-semibold;
 }
 
-.prose td {
-  @apply border border-gray-300 px-4 py-2;
+.prose code {
+  @apply px-2 py-1 rounded bg-[color:var(--card)] text-[color:var(--text)];
+}
+
+.prose pre {
+  @apply p-4 rounded-lg bg-[color:var(--bg-muted)] text-[color:var(--text)];
 }
 
 .prose hr {
-  @apply my-8 border-gray-300;
+  @apply my-8 border-[color:var(--border)];
 }
