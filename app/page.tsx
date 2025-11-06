@@ -37,6 +37,7 @@ export default function HomePage() {
                 alt="Cat of View - Expert Reviews"
                 fill
                 className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
           </div>

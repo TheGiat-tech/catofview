@@ -75,6 +75,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               alt={post.frontMatter.title}
               fill
               className="object-cover"
+              sizes="100vw"
               priority
             />
           </div>
