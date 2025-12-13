@@ -4,6 +4,8 @@ import { Container } from '@/components/container';
 import { Prose } from '@/components/prose';
 import { ProductGrid } from '@/components/product-grid';
 import { RatingStars } from '@/components/rating-stars';
+import { RelatedPosts } from '@/components/related-posts';
+import { TableOfContents } from '@/components/table-of-contents';
 import { getAllPosts, getPostBySlug, markdownToHtml } from '@/lib/posts';
 import { formatDate } from '@/lib/utils';
 import { generateOpenGraph, jsonLdArticle } from '@/lib/seo';
@@ -50,13 +52,16 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  const allPosts = await getAllPosts();
   const contentHtml = await markdownToHtml(post.content);
   const articleJsonLd = jsonLdArticle({
     title: post.frontMatter.title,
     description: post.frontMatter.excerpt,
     datePublished: new Date(post.frontMatter.date).toISOString(),
+    dateModified: post.lastModified,
     image: post.frontMatter.cover,
     url: `${config.siteUrl}/blog/${slug}`,
+    rating: post.frontMatter.rating,
   });
 
   return (
@@ -76,6 +81,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               fill
               className="object-cover"
               priority
+              loading="eager"
             />
           </div>
         )}
@@ -84,8 +90,16 @@ export default async function BlogPostPage({ params }: PageProps) {
           <header className="mb-12">
             <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
               <time dateTime={post.frontMatter.date}>
-                {formatDate(post.frontMatter.date)}
+                Published: {formatDate(post.frontMatter.date)}
               </time>
+              {post.lastModified && post.lastModified !== post.frontMatter.date && (
+                <>
+                  <span>•</span>
+                  <time dateTime={post.lastModified}>
+                    Updated: {formatDate(post.lastModified)}
+                  </time>
+                </>
+              )}
               <span>•</span>
               <span>{post.readingTime}</span>
             </div>
@@ -115,9 +129,15 @@ export default async function BlogPostPage({ params }: PageProps) {
             )}
           </header>
 
-          <Prose>
-            <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-          </Prose>
+          <div className="lg:flex lg:gap-8">
+            <div className="lg:flex-1">
+              <Prose>
+                <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+              </Prose>
+            </div>
+
+            <TableOfContents content={contentHtml} />
+          </div>
 
           {post.frontMatter.products && post.frontMatter.products.length > 0 && (
             <section className="mt-12">
@@ -125,6 +145,13 @@ export default async function BlogPostPage({ params }: PageProps) {
               <ProductGrid products={post.frontMatter.products} />
             </section>
           )}
+
+          <RelatedPosts
+            currentSlug={slug}
+            currentTags={post.frontMatter.tags || []}
+            allPosts={allPosts}
+            limit={3}
+          />
         </Container>
       </article>
     </>

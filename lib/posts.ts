@@ -12,6 +12,7 @@ const postsDirectory = path.join(process.cwd(), 'content/posts');
 export interface PostFrontMatter {
   title: string;
   date: string;
+  lastModified?: string;
   excerpt: string;
   cover?: string;
   tags?: string[];
@@ -33,6 +34,7 @@ export interface Post {
   frontMatter: PostFrontMatter;
   content: string;
   readingTime: string;
+  lastModified: string;
 }
 
 export async function getAllPosts(): Promise<Post[]> {
@@ -48,12 +50,14 @@ export async function getAllPosts(): Promise<Post[]> {
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
+      const stats = fs.statSync(fullPath);
 
       return {
         slug,
         frontMatter: data as PostFrontMatter,
         content,
         readingTime: readingTime(content).text,
+        lastModified: (data as PostFrontMatter).lastModified || stats.mtime.toISOString(),
       };
     });
 
@@ -71,12 +75,14 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
+  const stats = fs.statSync(fullPath);
 
   return {
     slug,
     frontMatter: data as PostFrontMatter,
     content,
     readingTime: readingTime(content).text,
+    lastModified: (data as PostFrontMatter).lastModified || stats.mtime.toISOString(),
   };
 }
 

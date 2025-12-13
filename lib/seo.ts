@@ -1,4 +1,5 @@
 import { config } from './config';
+import { Product } from './posts';
 
 interface OpenGraphData {
   title: string;
@@ -48,8 +49,9 @@ export function jsonLdArticle(article: {
   dateModified?: string;
   image?: string;
   url: string;
+  rating?: number;
 }) {
-  return {
+  const articleData: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: article.title,
@@ -73,5 +75,46 @@ export function jsonLdArticle(article: {
       '@type': 'WebPage',
       '@id': article.url,
     },
+  };
+
+  // Add review aggregate rating if available
+  if (article.rating) {
+    articleData.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: article.rating,
+      bestRating: 5,
+      ratingCount: 1,
+    };
+  }
+
+  return articleData;
+}
+
+export function jsonLdProductReview(product: Product & { rating?: number; url: string }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    itemReviewed: {
+      '@type': 'Product',
+      name: product.name,
+      image: product.image,
+      description: product.pros.join(', '),
+    },
+    reviewRating: product.rating
+      ? {
+          '@type': 'Rating',
+          ratingValue: product.rating,
+          bestRating: 5,
+        }
+      : undefined,
+    author: {
+      '@type': 'Organization',
+      name: config.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: config.siteName,
+    },
+    url: product.url,
   };
 }

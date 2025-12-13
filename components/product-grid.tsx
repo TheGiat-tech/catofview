@@ -13,7 +13,13 @@ export function ProductGrid({ products }: ProductGridProps) {
       {products.map((product, index) => (
         <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
           <div className="relative h-64 w-full">
-            <Image src={product.image} alt={product.title} fill className="object-cover" />
+            <Image 
+              src={product.image} 
+              alt={product.title} 
+              fill 
+              className="object-cover"
+              loading="lazy"
+            />
           </div>
           <div className="p-6">
             <h3 className="text-xl font-bold mb-3">{product.title}</h3>
