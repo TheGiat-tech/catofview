@@ -17,14 +17,15 @@ export function TableOfContents({ content }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>('');
 
   useEffect(() => {
-    // Extract headings from the content
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = content;
-    const headingElements = tempDiv.querySelectorAll('h2, h3');
+    // Extract headings from the rendered content in the DOM
+    const articleElement = document.querySelector('article');
+    if (!articleElement) return;
+
+    const headingElements = articleElement.querySelectorAll('h2, h3');
     
     const extractedHeadings: Heading[] = [];
     headingElements.forEach((heading) => {
-      const id = heading.id || heading.textContent?.toLowerCase().replace(/\s+/g, '-') || '';
+      const id = heading.id;
       if (id) {
         extractedHeadings.push({
           id,
@@ -48,7 +49,7 @@ export function TableOfContents({ content }: TableOfContentsProps) {
       { rootMargin: '-100px 0px -66%' }
     );
 
-    // Observe all heading elements
+    // Observe all heading elements in the actual DOM
     headingElements.forEach((heading) => {
       if (heading.id) {
         observer.observe(heading);

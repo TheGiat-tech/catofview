@@ -91,7 +91,7 @@ export function jsonLdArticle(article: {
 }
 
 export function jsonLdProductReview(product: Product & { rating?: number; url: string }) {
-  return {
+  const reviewData: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'Review',
     itemReviewed: {
@@ -100,13 +100,6 @@ export function jsonLdProductReview(product: Product & { rating?: number; url: s
       image: product.image,
       description: product.pros.join(', '),
     },
-    reviewRating: product.rating
-      ? {
-          '@type': 'Rating',
-          ratingValue: product.rating,
-          bestRating: 5,
-        }
-      : undefined,
     author: {
       '@type': 'Organization',
       name: config.author,
@@ -117,4 +110,15 @@ export function jsonLdProductReview(product: Product & { rating?: number; url: s
     },
     url: product.url,
   };
+
+  // Only add rating if it exists
+  if (product.rating) {
+    reviewData.reviewRating = {
+      '@type': 'Rating',
+      ratingValue: product.rating,
+      bestRating: 5,
+    };
+  }
+
+  return reviewData;
 }
