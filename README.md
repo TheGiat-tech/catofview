@@ -90,8 +90,8 @@ catofview/
 │  ├─ affiliates.ts              # Amazon affiliate links
 │  └─ posts.ts                   # Blog post utilities
 ├─ content/posts/                # Markdown blog posts
-│  ├─ best-tofu-litter-2025.md
-│  └─ best-self-cleaning-litter-boxes-2025.md
+│  ├─ best-tofu-litter-2026.md
+│  └─ best-self-cleaning-litter-boxes-2026.md
 ├─ public/                       # Static assets
 │  ├─ images/                    # Product images
 │  ├─ robots.txt
@@ -111,7 +111,7 @@ catofview/
 ```yaml
 ---
 title: "Your Post Title"
-date: "2025-10-20"
+date: "2026-10-20"
 excerpt: "Brief description for SEO and previews"
 cover: "/images/your-cover.jpg"
 tags: ["tag1", "tag2"]

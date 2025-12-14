@@ -1,6 +1,6 @@
 ---
-title: "The 7 Best Self-Cleaning Litter Boxes (2025) — Tested & Reviewed"
-date: "2025-10-18"
+title: "The 7 Best Self-Cleaning Litter Boxes (2026) — Tested & Reviewed"
+date: "2026-10-18"
 excerpt: "We tested leading automatic litter boxes for odor control, clump handling, safety, app features, and long-term costs. These are our top picks for hassle-free cat care."
 cover: "/images/self-cleaning/hub-cover.jpg"
 tags: ["self-cleaning", "reviews", "automatic"]

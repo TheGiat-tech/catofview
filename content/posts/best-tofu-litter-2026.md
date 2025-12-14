@@ -1,6 +1,6 @@
 ---
-title: "Best Tofu Cat Litter for 2025 — Tested & Reviewed"
-date: "2025-10-15"
+title: "Best Tofu Cat Litter for 2026 — Tested & Reviewed"
+date: "2026-10-15"
 excerpt: "We tested the top tofu cat litters for odor control, clumping, dust levels, and environmental impact. Here are our favorite eco-friendly options that actually work."
 cover: "/images/litter/og-tofu.jpg"
 tags: ["tofu-litter", "reviews", "eco-friendly"]
