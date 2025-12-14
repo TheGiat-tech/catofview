@@ -13,10 +13,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <Badge variant="success" className="mb-4">
-                Updated for 2025
+                Updated for 2026
               </Badge>
               <h1 className="text-5xl font-bold text-gray-900 mb-6">
-                The 5 Best Tofu Cat Litters (2025) – Tested & Reviewed
+                The 5 Best Tofu Cat Litters (2026) – Tested & Reviewed
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 We've tested dozens of cat litters to find the best options for odor control,
@@ -51,7 +51,7 @@ export default function HomePage() {
             title="Tofu Cat Litter"
             description="Eco-friendly, low-dust options that clump well and control odor effectively."
             image="/images/litter/og-tofu.jpg"
-            href="/blog/best-tofu-litter-2025"
+            href="/blog/best-tofu-litter-2026"
           />
           <Card
             title="Self-Cleaning Boxes"
@@ -91,16 +91,16 @@ export default function HomePage() {
         <h2 className="text-3xl font-bold mb-8">Latest from the Blog</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card
-            title="The 7 Best Self-Cleaning Litter Boxes (2025)"
+            title="The 7 Best Self-Cleaning Litter Boxes (2026)"
             description="We tested leading automatic litter boxes for odor control, clump handling, safety, and long-term costs."
             image="/images/self-cleaning/hub-cover.jpg"
-            href="/blog/best-self-cleaning-litter-boxes-2025"
+            href="/blog/best-self-cleaning-litter-boxes-2026"
           />
           <Card
-            title="Best Tofu Cat Litter for 2025"
+            title="Best Tofu Cat Litter for 2026"
             description="Eco-friendly, biodegradable, and highly effective tofu litters that your cat will love."
             image="/images/litter/og-tofu.jpg"
-            href="/blog/best-tofu-litter-2025"
+            href="/blog/best-tofu-litter-2026"
           />
         </div>
         <div className="text-center mt-8">
