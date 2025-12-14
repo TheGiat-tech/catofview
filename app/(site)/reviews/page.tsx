@@ -26,7 +26,7 @@ export default function ReviewsPage() {
           title="Tofu Cat Litter"
           description="Eco-friendly, biodegradable litter options with excellent odor control."
           image="/images/litter/og-tofu.jpg"
-          href="/blog/best-tofu-litter-2025"
+          href="/blog/best-tofu-litter-2026"
         />
         <Card
           title="All Reviews"

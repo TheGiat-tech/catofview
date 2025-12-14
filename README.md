@@ -111,7 +111,7 @@ catofview/
 ```yaml
 ---
 title: "Your Post Title"
-date: "2025-10-20"
+date: "2026-10-20"
 excerpt: "Brief description for SEO and previews"
 cover: "/images/your-cover.jpg"
 tags: ["tag1", "tag2"]
