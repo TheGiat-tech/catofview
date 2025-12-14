@@ -12,6 +12,7 @@ const postsDirectory = path.join(process.cwd(), 'content/posts');
 export interface PostFrontMatter {
   title: string;
   date: string;
+  lastModified?: string;
   excerpt: string;
   cover?: string;
   tags?: string[];

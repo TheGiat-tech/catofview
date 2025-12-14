@@ -4,9 +4,11 @@ import { Container } from '@/components/container';
 import { Prose } from '@/components/prose';
 import { ProductGrid } from '@/components/product-grid';
 import { RatingStars } from '@/components/rating-stars';
+import { RelatedPosts } from '@/components/related-posts';
+import { TableOfContents } from '@/components/table-of-contents';
 import { getAllPosts, getPostBySlug, markdownToHtml } from '@/lib/posts';
 import { formatDate } from '@/lib/utils';
-import { generateOpenGraph, jsonLdArticle } from '@/lib/seo';
+import { generateOpenGraph, jsonLdArticle, jsonLdReviewArticle } from '@/lib/seo';
 import { config } from '@/lib/config';
 import type { Metadata } from 'next';
 
@@ -50,21 +52,42 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  const allPosts = await getAllPosts();
   const contentHtml = await markdownToHtml(post.content);
-  const articleJsonLd = jsonLdArticle({
-    title: post.frontMatter.title,
-    description: post.frontMatter.excerpt,
-    datePublished: new Date(post.frontMatter.date).toISOString(),
-    image: post.frontMatter.cover,
-    url: `${config.siteUrl}/blog/${slug}`,
-  });
+  
+  // Use Review schema if products are present, otherwise use Article schema
+  const hasProducts = post.frontMatter.products && post.frontMatter.products.length > 0;
+  const structuredData = hasProducts
+    ? jsonLdReviewArticle({
+        title: post.frontMatter.title,
+        description: post.frontMatter.excerpt,
+        datePublished: new Date(post.frontMatter.date).toISOString(),
+        dateModified: post.frontMatter.lastModified
+          ? new Date(post.frontMatter.lastModified).toISOString()
+          : new Date(post.frontMatter.date).toISOString(),
+        image: post.frontMatter.cover,
+        url: `${config.siteUrl}/blog/${slug}`,
+        rating: post.frontMatter.rating,
+        products: post.frontMatter.products,
+      })
+    : jsonLdArticle({
+        title: post.frontMatter.title,
+        description: post.frontMatter.excerpt,
+        datePublished: new Date(post.frontMatter.date).toISOString(),
+        dateModified: post.frontMatter.lastModified
+          ? new Date(post.frontMatter.lastModified).toISOString()
+          : new Date(post.frontMatter.date).toISOString(),
+        image: post.frontMatter.cover,
+        url: `${config.siteUrl}/blog/${slug}`,
+        rating: post.frontMatter.rating,
+      });
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(articleJsonLd),
+          __html: JSON.stringify(structuredData),
         }}
       />
       <article>
@@ -80,51 +103,74 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         )}
 
-        <Container className="max-w-4xl">
-          <header className="mb-12">
-            <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-              <time dateTime={post.frontMatter.date}>
-                {formatDate(post.frontMatter.date)}
-              </time>
-              <span>•</span>
-              <span>{post.readingTime}</span>
+        <Container className="max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_250px] gap-12">
+            <div className="max-w-4xl">
+              <header className="mb-12">
+                <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                  <time dateTime={post.frontMatter.date}>
+                    {formatDate(post.frontMatter.date)}
+                  </time>
+                  {post.frontMatter.lastModified && 
+                    post.frontMatter.lastModified !== post.frontMatter.date && (
+                    <>
+                      <span>•</span>
+                      <span>
+                        Updated {formatDate(post.frontMatter.lastModified)}
+                      </span>
+                    </>
+                  )}
+                  <span>•</span>
+                  <span>{post.readingTime}</span>
+                </div>
+
+                <h1 className="text-5xl font-bold mb-4">{post.frontMatter.title}</h1>
+                
+                <p className="text-xl text-gray-600 mb-4">{post.frontMatter.excerpt}</p>
+
+                {post.frontMatter.rating && (
+                  <div className="flex items-center gap-4">
+                    <span className="font-semibold">Overall Rating:</span>
+                    <RatingStars rating={post.frontMatter.rating} />
+                  </div>
+                )}
+
+                {post.frontMatter.tags && post.frontMatter.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {post.frontMatter.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 bg-brand-100 text-brand-700 rounded-full text-sm"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </header>
+
+              <Prose>
+                <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+              </Prose>
+
+              {post.frontMatter.products && post.frontMatter.products.length > 0 && (
+                <section className="mt-12">
+                  <h2 className="text-3xl font-bold mb-6">Featured Products</h2>
+                  <ProductGrid products={post.frontMatter.products} />
+                </section>
+              )}
+
+              <RelatedPosts
+                currentSlug={slug}
+                posts={allPosts}
+                tags={post.frontMatter.tags}
+              />
             </div>
 
-            <h1 className="text-5xl font-bold mb-4">{post.frontMatter.title}</h1>
-            
-            <p className="text-xl text-gray-600 mb-4">{post.frontMatter.excerpt}</p>
-
-            {post.frontMatter.rating && (
-              <div className="flex items-center gap-4">
-                <span className="font-semibold">Overall Rating:</span>
-                <RatingStars rating={post.frontMatter.rating} />
-              </div>
-            )}
-
-            {post.frontMatter.tags && post.frontMatter.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-4">
-                {post.frontMatter.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 bg-brand-100 text-brand-700 rounded-full text-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </header>
-
-          <Prose>
-            <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-          </Prose>
-
-          {post.frontMatter.products && post.frontMatter.products.length > 0 && (
-            <section className="mt-12">
-              <h2 className="text-3xl font-bold mb-6">Featured Products</h2>
-              <ProductGrid products={post.frontMatter.products} />
-            </section>
-          )}
+            <aside className="order-first lg:order-last">
+              <TableOfContents />
+            </aside>
+          </div>
         </Container>
       </article>
     </>

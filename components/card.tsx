@@ -9,14 +9,22 @@ interface CardProps {
   href?: string;
   className?: string;
   children?: React.ReactNode;
+  priority?: boolean;
 }
 
-export function Card({ title, description, image, href, className, children }: CardProps) {
+export function Card({ title, description, image, href, className, children, priority = false }: CardProps) {
   const content = (
     <div className={cn('bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow', className)}>
       {image && (
         <div className="relative h-48 w-full">
-          <Image src={image} alt={title} fill className="object-cover" />
+          <Image 
+            src={image} 
+            alt={title} 
+            fill 
+            className="object-cover"
+            loading={priority ? undefined : 'lazy'}
+            priority={priority}
+          />
         </div>
       )}
       <div className="p-6">
