@@ -90,8 +90,8 @@ catofview/
 │  ├─ affiliates.ts              # Amazon affiliate links
 │  └─ posts.ts                   # Blog post utilities
 ├─ content/posts/                # Markdown blog posts
-│  ├─ best-tofu-litter-2025.md
-│  └─ best-self-cleaning-litter-boxes-2025.md
+│  ├─ best-tofu-litter-2026.md
+│  └─ best-self-cleaning-litter-boxes-2026.md
 ├─ public/                       # Static assets
 │  ├─ images/                    # Product images
 │  ├─ robots.txt
