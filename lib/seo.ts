@@ -93,7 +93,12 @@ export function jsonLdProduct(product: {
   rating?: number;
   pros?: string[];
   cons?: string[];
+  brand?: string;
 }) {
+  // Extract brand from name if not provided explicitly
+  // Common patterns: "Brand Model", "Brand-Model", or just use first word as fallback
+  const brandName = product.brand || product.name.split(/[\s-]/)[0];
+  
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -104,7 +109,7 @@ export function jsonLdProduct(product: {
       : `${config.siteUrl}${product.image}`,
     brand: {
       '@type': 'Brand',
-      name: product.name.split(' ')[0],
+      name: brandName,
     },
     ...(product.rating && {
       aggregateRating: {

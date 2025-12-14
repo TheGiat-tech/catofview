@@ -112,7 +112,8 @@ export default async function BlogPostPage({ params }: PageProps) {
                     {formatDate(post.frontMatter.date)}
                   </time>
                   {post.frontMatter.lastModified && 
-                    post.frontMatter.lastModified !== post.frontMatter.date && (
+                    new Date(post.frontMatter.lastModified).getTime() !== 
+                    new Date(post.frontMatter.date).getTime() && (
                     <>
                       <span>•</span>
                       <span>

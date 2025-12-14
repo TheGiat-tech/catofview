@@ -15,6 +15,7 @@ export function getYearRange(startYear: number): string {
 
 /**
  * Check if content is current (within 18 months of publication)
+ * Note: Uses approximate month calculation (30 days) for simplicity
  */
 export function isContentCurrent(dateString: string): boolean {
   const publishDate = new Date(dateString);

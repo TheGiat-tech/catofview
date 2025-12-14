@@ -27,6 +27,7 @@ export interface Product {
   pros: string[];
   cons: string[];
   specs: Record<string, string>;
+  brand?: string;
 }
 
 export interface Post {

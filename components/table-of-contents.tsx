@@ -8,6 +8,10 @@ interface Heading {
   level: number;
 }
 
+// Constants for IntersectionObserver configuration
+const ACTIVE_SECTION_TOP_MARGIN = '-100px'; // Offset from top to account for fixed header
+const ACTIVE_SECTION_BOTTOM_MARGIN = '-80%'; // Large bottom margin to trigger activation earlier
+
 export function TableOfContents() {
   const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState<string>('');
@@ -32,7 +36,7 @@ export function TableOfContents() {
         });
       },
       {
-        rootMargin: '-100px 0px -80% 0px',
+        rootMargin: `${ACTIVE_SECTION_TOP_MARGIN} 0px ${ACTIVE_SECTION_BOTTOM_MARGIN} 0px`,
       }
     );
 
