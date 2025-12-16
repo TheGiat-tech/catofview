@@ -3,6 +3,13 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     unoptimized: false,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
+        pathname: '/images/**',
+      },
+    ],
   },
   async headers() {
     return [
