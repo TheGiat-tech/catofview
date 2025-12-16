@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Container } from '@/components/container';
 import { Badge } from '@/components/badge';
 import { RatingStars } from '@/components/rating-stars';
+import { amazonSearch } from '@/lib/affiliates';
 
 // Product data for the 5 tofu cat litters
 const tofuLitters = [
@@ -233,7 +234,9 @@ export default function HomePage() {
                           Read Full Review
                         </Link>
                         <a 
-                          href="#"
+                          href={amazonSearch(litter.name)}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="inline-block bg-white text-brand-600 px-6 py-3 rounded-lg font-semibold border-2 border-brand-600 hover:bg-brand-50 transition-colors text-center"
                         >
                           Check Price
