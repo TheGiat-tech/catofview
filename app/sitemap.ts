@@ -20,6 +20,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
+      url: `${config.siteUrl}/best-cat-litter-2026`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.95,
+    },
+    {
+      url: `${config.siteUrl}/best-cat-litter-for-odor-2026`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${config.siteUrl}/best-cat-litter-for-apartments-2026`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${config.siteUrl}/tofu-vs-clay-cat-litter`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    },
+    {
+      url: `${config.siteUrl}/tofu-vs-silica-cat-litter`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    },
+    {
       url: `${config.siteUrl}/reviews`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
