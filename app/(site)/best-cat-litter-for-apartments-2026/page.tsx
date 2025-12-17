@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { Container } from '@/components/container';
 import { Badge } from '@/components/badge';
 import Link from 'next/link';
+import { amazonSearch } from '@/lib/affiliates';
 
 export const metadata: Metadata = {
   title: 'Best Cat Litter for Apartments (2026) | CatOfView',
@@ -82,7 +83,7 @@ export default function BestCatLitterForApartments2026() {
             If you live in an apartment, <strong>tofu cat litter is the safest and cleanest choice in 2026</strong>.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="btn-primary">
+            <a href={amazonSearch('tofu cat litter low dust')} target="_blank" rel="noopener noreferrer" className="btn-primary">
               👉 Check availability
             </a>
           </div>

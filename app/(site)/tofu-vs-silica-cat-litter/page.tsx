@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { Container } from '@/components/container';
 import { Badge } from '@/components/badge';
 import Link from 'next/link';
+import { amazonSearch } from '@/lib/affiliates';
 
 export const metadata: Metadata = {
   title: 'Tofu vs Silica Cat Litter: Which Should You Choose in 2026? | CatOfView',
@@ -134,7 +135,7 @@ export default function TofuVsSilicaCatLitter() {
             For daily use, natural materials, and environmental responsibility, tofu is the better choice in 2026.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="btn-primary">
+            <a href={amazonSearch('tofu cat litter')} target="_blank" rel="noopener noreferrer" className="btn-primary">
               👉 See best options
             </a>
           </div>

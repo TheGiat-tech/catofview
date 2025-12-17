@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { Container } from '@/components/container';
 import { Badge } from '@/components/badge';
 import Link from 'next/link';
+import { amazonSearch } from '@/lib/affiliates';
 
 export const metadata: Metadata = {
   title: 'Best Cat Litter in 2026 - Our Top Pick | CatOfView',
@@ -81,7 +82,7 @@ export default function BestCatLitter2026() {
             Clay only makes sense if price is your main concern.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="btn-primary">
+            <a href={amazonSearch('tofu cat litter')} target="_blank" rel="noopener noreferrer" className="btn-primary">
               👉 Check current price
             </a>
           </div>

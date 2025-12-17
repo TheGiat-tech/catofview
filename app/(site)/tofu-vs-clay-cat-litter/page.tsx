@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { Container } from '@/components/container';
 import { Badge } from '@/components/badge';
 import Link from 'next/link';
+import { amazonSearch } from '@/lib/affiliates';
 
 export const metadata: Metadata = {
   title: 'Tofu vs Clay Cat Litter: Which Is Better in 2026? | CatOfView',
@@ -124,7 +125,7 @@ export default function TofuVsClayCatLitter() {
             The extra cost pays for itself in cleanliness, less tracking, and better odor control.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="btn-primary">
+            <a href={amazonSearch('tofu cat litter')} target="_blank" rel="noopener noreferrer" className="btn-primary">
               👉 Compare prices
             </a>
           </div>
