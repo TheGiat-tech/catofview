@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 {post.frontMatter.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 bg-brand-100 text-brand-700 rounded-full text-sm"
+                    className="px-3 py-1 bg-brand-100 text-brand-900 rounded-full text-sm"
                   >
                     {tag}
                   </span>

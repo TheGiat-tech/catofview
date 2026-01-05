@@ -35,7 +35,7 @@ export default async function BlogPage() {
             {post.frontMatter.tags && post.frontMatter.tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-3">
                 {post.frontMatter.tags.map((tag) => (
-                  <span key={tag} className="px-2 py-1 bg-brand-100 text-brand-700 rounded text-xs">
+                  <span key={tag} className="px-2 py-1 bg-brand-100 text-brand-800 rounded text-xs">
                     {tag}
                   </span>
                 ))}
