@@ -67,8 +67,8 @@ export default function SelfCleaningPage() {
           <h2 className="text-3xl font-bold mb-6">Why Self-Cleaning?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-green-800 mb-3">✓ Advantages</h3>
-              <ul className="space-y-2 text-gray-700">
+              <h3 className="text-xl font-bold text-green-900 mb-3">✓ Advantages</h3>
+              <ul className="space-y-2 text-gray-800">
                 <li>• Reduces daily scooping to once a week</li>
                 <li>• Better odor control with sealed waste compartments</li>
                 <li>• Cleaner litter = happier cats</li>
@@ -77,8 +77,8 @@ export default function SelfCleaningPage() {
               </ul>
             </div>
             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-yellow-800 mb-3">⚠ Considerations</h3>
-              <ul className="space-y-2 text-gray-700">
+              <h3 className="text-xl font-bold text-yellow-900 mb-3">⚠ Considerations</h3>
+              <ul className="space-y-2 text-gray-800">
                 <li>• Higher upfront cost ($300-$700)</li>
                 <li>• Requires electricity and Wi-Fi (most models)</li>
                 <li>• Larger footprint than traditional boxes</li>
@@ -96,15 +96,22 @@ export default function SelfCleaningPage() {
             {products.map((product) => (
               <div key={product.name} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="relative h-64 w-full">
-                  <Image src={product.image} alt={product.name} fill className="object-cover" />
+                  <Image 
+                    src={product.image} 
+                    alt={product.name} 
+                    fill 
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold mb-3">{product.name}</h3>
                   <p className="text-gray-600 mb-4">{product.description}</p>
                   <ul className="space-y-2 mb-6">
                     {product.highlights.map((highlight, i) => (
-                      <li key={i} className="text-sm text-gray-700 flex items-start">
-                        <span className="text-brand-600 mr-2">✓</span>
+                      <li key={i} className="text-sm text-gray-800 flex items-start">
+                        <span className="text-brand-700 mr-2">✓</span>
                         {highlight}
                       </li>
                     ))}
@@ -129,28 +136,28 @@ export default function SelfCleaningPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-bold mb-2">Safety Features</h3>
-              <p className="text-gray-700">
+              <p className="text-gray-800">
                 Look for weight sensors, pinch protection, and automatic stop mechanisms. Premium models
                 have multiple sensors to prevent accidents.
               </p>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-2">Odor Control</h3>
-              <p className="text-gray-700">
+              <p className="text-gray-800">
                 Sealed waste drawers and carbon filters make a huge difference. Some models include
                 built-in deodorizers.
               </p>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-2">Noise Level</h3>
-              <p className="text-gray-700">
+              <p className="text-gray-800">
                 Brushless motors are quieter than standard motors. Check if the unit can be scheduled
                 to run during the day when you're away.
               </p>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-2">Long-Term Costs</h3>
-              <p className="text-gray-700">
+              <p className="text-gray-800">
                 Factor in waste drawer liners, carbon filters, and electricity. Some models use standard
                 trash bags instead of proprietary liners.
               </p>

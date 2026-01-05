@@ -13,17 +13,24 @@ export function ProductGrid({ products }: ProductGridProps) {
       {products.map((product, index) => (
         <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
           <div className="relative h-64 w-full">
-            <Image src={product.image} alt={product.title} fill className="object-cover" />
+            <Image 
+              src={product.image} 
+              alt={product.title} 
+              fill 
+              className="object-cover"
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
           </div>
           <div className="p-6">
             <h3 className="text-xl font-bold mb-3">{product.title}</h3>
             
             <div className="mb-4">
-              <h4 className="font-semibold text-green-700 mb-2">Pros:</h4>
+              <h4 className="font-semibold text-green-800 mb-2">Pros:</h4>
               <ul className="space-y-1">
                 {product.pros.map((pro, i) => (
-                  <li key={i} className="text-sm text-gray-700 flex items-start">
-                    <span className="text-green-600 mr-2">✓</span>
+                  <li key={i} className="text-sm text-gray-800 flex items-start">
+                    <span className="text-green-700 mr-2">✓</span>
                     {pro}
                   </li>
                 ))}
@@ -31,11 +38,11 @@ export function ProductGrid({ products }: ProductGridProps) {
             </div>
 
             <div className="mb-4">
-              <h4 className="font-semibold text-red-700 mb-2">Cons:</h4>
+              <h4 className="font-semibold text-red-800 mb-2">Cons:</h4>
               <ul className="space-y-1">
                 {product.cons.map((con, i) => (
-                  <li key={i} className="text-sm text-gray-700 flex items-start">
-                    <span className="text-red-600 mr-2">✗</span>
+                  <li key={i} className="text-sm text-gray-800 flex items-start">
+                    <span className="text-red-700 mr-2">✗</span>
                     {con}
                   </li>
                 ))}
